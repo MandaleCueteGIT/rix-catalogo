@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Catálogo mayorista y sistema de pedidos de RIX Distribuciones">
+  <title>RIX · Catálogo Mayorista</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">RIX</div>
+      <div>
+        <strong>RIX Distribuciones</strong>
+        <span>Catálogo mayorista</span>
+      </div>
+    </div>
+    <button id="cartButton" class="cart-button" type="button" aria-label="Abrir pedido">
+      <span>Mi pedido</span><b id="cartCount">0</b>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">PEDIDOS MAYORISTAS · SIN PAGO ONLINE</span>
+        <h1>Pedí rápido.<br>Nosotros preparamos.</h1>
+        <p>Armá tu solicitud, revisala y enviala a RIX. Un asesor confirma disponibilidad y condiciones antes de preparar el pedido.</p>
+      </div>
+      <div class="search-wrap">
+        <input id="searchInput" type="search" placeholder="Buscar por producto, marca o SKU…" autocomplete="off">
+      </div>
+    </section>
+
+    <section class="catalog-shell">
+      <nav id="categoryTabs" class="category-tabs" aria-label="Categorías"></nav>
+      <div class="section-head">
+        <div><span class="eyebrow">CATÁLOGO</span><h2 id="catalogTitle">Productos</h2></div>
+        <span id="productCount" class="muted"></span>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+      <div id="emptyState" class="empty-state hidden">No encontramos productos con ese filtro.</div>
+    </section>
+  </main>
+
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div><span class="eyebrow">SOLICITUD</span><h2>Mi pedido</h2></div>
+        <button id="closeCart" class="icon-button" type="button" aria-label="Cerrar">×</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-summary">
+        <div><span>Unidades</span><strong id="cartUnits">0</strong></div>
+        <div><span>Total estimado</span><strong id="cartTotal">$ 0</strong></div>
+        <small>El envío del pedido no confirma stock ni constituye una venta. RIX valida la solicitud antes de pasarla a depósito.</small>
+        <button id="sendOrder" class="primary-button" type="button">Enviar pedido</button>
+      </div>
+    </div>
+  </aside>
+  <div id="drawerBackdrop" class="backdrop hidden"></div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
