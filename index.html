@@ -3,81 +3,128 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#111111">
+  <meta name="theme-color" content="#050506">
   <meta name="description" content="Catálogo mayorista y sistema de pedidos de RIX Distribuciones">
   <title>RIX · Catálogo Mayorista</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">
-      <img src="assets/rix-logo-rojo.png" alt="RIX Distribuciones" style="display:block;width:clamp(120px,14vw,180px);height:auto;max-height:54px;object-fit:contain">
-    </div>
+    <a class="brand" href="#top" aria-label="Inicio RIX Distribuciones">
+      <img class="brand-logo" src="assets/rix-logo-rojo.png" alt="RIX Distribuciones">
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a class="active" href="#catalogo">Catálogo</a>
+      <button id="navPedidos" type="button">Mi pedido</button>
+      <a href="#ayuda">Ayuda</a>
+    </nav>
+
     <button id="cartButton" class="cart-button" type="button" aria-label="Abrir pedido">
-      <span>Mi pedido</span><b id="cartCount">0</b>
+      <span class="cart-icon">⌁</span>
+      <span>Mi pedido</span>
+      <b id="cartCount">0</b>
     </button>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
       <div class="hero-copy">
-        <span class="eyebrow">PEDIDOS MAYORISTAS · SIN PAGO ONLINE</span>
-        <h1>Pedí rápido.<br>Nosotros preparamos.</h1>
-        <p>Armá tu solicitud, revisala y enviala a RIX. Un asesor confirma disponibilidad y condiciones antes de preparar el pedido.</p>
-      </div>
-      <div class="search-wrap">
-        <input id="searchInput" type="search" placeholder="Buscar por producto, marca o SKU…" autocomplete="off">
-      </div>
-    </section>
+        <span class="eyebrow">CATÁLOGO MAYORISTA · SIN PAGO ONLINE</span>
+        <h1>Tecnología que impulsa tu negocio.</h1>
+        <p>Accedé a productos RIX, armá tu solicitud y enviá el pedido. Un asesor confirma disponibilidad y condiciones antes de pasarlo a depósito.</p>
 
-    <section class="catalog-shell">
-      <nav id="categoryTabs" class="category-tabs" aria-label="Categorías"></nav>
-      <div class="section-head">
-        <div><span class="eyebrow">CATÁLOGO</span><h2 id="catalogTitle">Productos</h2></div>
-        <span id="productCount" class="muted"></span>
-      </div>
-      <div id="productGrid" class="product-grid"></div>
-      <div id="emptyState" class="empty-state hidden">No encontramos productos con ese filtro.</div>
-    </section>
-  </main>
-
-  <aside id="cartDrawer" class="drawer" aria-hidden="true">
-    <div class="drawer-panel">
-      <div class="drawer-head">
-        <div><span class="eyebrow">SOLICITUD</span><h2>Mi pedido</h2></div>
-        <button id="closeCart" class="icon-button" type="button" aria-label="Cerrar">×</button>
-      </div>
-
-      <div id="cartItems" class="cart-items"></div>
-
-      <div class="customer-form" id="customerForm">
-        <span class="eyebrow">DATOS DEL PEDIDO</span>
-        <div class="form-grid">
-          <label>Comercio
-            <input id="customerBusiness" maxlength="120" autocomplete="organization" placeholder="Nombre del comercio">
-          </label>
-          <label>Contacto
-            <input id="customerName" maxlength="120" autocomplete="name" placeholder="Nombre y apellido">
-          </label>
-          <label class="form-span">WhatsApp
-            <input id="customerWhatsapp" maxlength="50" inputmode="tel" autocomplete="tel" placeholder="Ej. 261 555 1234">
-          </label>
-          <label class="form-span">Observaciones
-            <textarea id="customerNotes" maxlength="1000" rows="2" placeholder="Aclaraciones para RIX (opcional)"></textarea>
-          </label>
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input id="searchInput" type="search" placeholder="Buscar productos, marcas, modelos o SKU…" autocomplete="off">
         </div>
       </div>
 
-      <div class="cart-summary">
-        <div><span>Unidades</span><strong id="cartUnits">0</strong></div>
-        <div><span>Total estimado</span><strong id="cartTotal">$ 0</strong></div>
-        <small>El envío del pedido no confirma stock ni constituye una venta. RIX valida la solicitud antes de pasarla a depósito.</small>
-        <button id="sendOrder" class="primary-button" type="button">Enviar pedido</button>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-card">
+          <span>RIX</span>
+          <small>SOLUCIONES<br>TECNOLOGÍA<br>DISTRIBUCIÓN</small>
+        </div>
       </div>
-    </div>
-  </aside>
+    </section>
+
+    <section id="catalogo" class="catalog-layout">
+      <div class="catalog-main">
+        <nav id="categoryTabs" class="category-tabs" aria-label="Categorías"></nav>
+
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">CATÁLOGO</span>
+            <h2 id="catalogTitle">Productos</h2>
+          </div>
+          <div class="section-tools">
+            <span id="productCount" class="muted"></span>
+          </div>
+        </div>
+
+        <div id="productGrid" class="product-grid"></div>
+        <div id="emptyState" class="empty-state hidden">No encontramos productos con ese filtro.</div>
+      </div>
+
+      <aside id="cartDrawer" class="drawer" aria-hidden="false">
+        <div class="drawer-panel">
+          <div class="drawer-head">
+            <div>
+              <span class="eyebrow">SOLICITUD</span>
+              <h2>Mi pedido</h2>
+            </div>
+            <button id="closeCart" class="icon-button" type="button" aria-label="Cerrar">×</button>
+          </div>
+
+          <div id="cartItems" class="cart-items"></div>
+
+          <div class="customer-form" id="customerForm">
+            <span class="eyebrow">DATOS DEL PEDIDO</span>
+            <div class="form-grid">
+              <label>Comercio
+                <input id="customerBusiness" maxlength="120" autocomplete="organization" placeholder="Nombre del comercio">
+              </label>
+              <label>Contacto
+                <input id="customerName" maxlength="120" autocomplete="name" placeholder="Nombre y apellido">
+              </label>
+              <label class="form-span">WhatsApp
+                <input id="customerWhatsapp" maxlength="50" inputmode="tel" autocomplete="tel" placeholder="Ej. 261 555 1234">
+              </label>
+              <label class="form-span">Observaciones
+                <textarea id="customerNotes" maxlength="1000" rows="2" placeholder="Aclaraciones para RIX (opcional)"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="cart-summary">
+            <div><span>Unidades</span><strong id="cartUnits">0</strong></div>
+            <div><span>Total estimado</span><strong id="cartTotal">$ 0</strong></div>
+            <small>El envío del pedido no confirma stock ni constituye una venta. RIX valida la solicitud antes de pasarla a depósito.</small>
+            <button id="sendOrder" class="primary-button" type="button">Enviar pedido →</button>
+          </div>
+        </div>
+
+        <div id="ayuda" class="info-card">
+          <strong>Stock y preparación</strong>
+          <span>Un asesor de RIX confirma disponibilidad y luego se pasa a depósito.</span>
+        </div>
+      </aside>
+    </section>
+  </main>
+
   <div id="drawerBackdrop" class="backdrop hidden"></div>
   <iframe id="rixOrderFrame" name="rixOrderFrame" class="hidden" title="Envío de pedido"></iframe>
+
+  <div id="orderModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+    <div class="modal-card">
+      <span class="modal-icon">✓</span>
+      <span class="eyebrow">PEDIDO RECIBIDO</span>
+      <h2 id="orderModalTitle">Solicitud enviada</h2>
+      <strong id="modalOrderId" class="modal-order-id">RIX-000000</strong>
+      <p id="modalOrderMessage">Un asesor de RIX confirmará disponibilidad y condiciones.</p>
+      <button id="closeOrderModal" class="primary-button" type="button">Volver al catálogo</button>
+    </div>
+  </div>
 
   <div id="toast" class="toast" role="status"></div>
 
