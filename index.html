@@ -51,7 +51,27 @@
         <div><span class="eyebrow">SOLICITUD</span><h2>Mi pedido</h2></div>
         <button id="closeCart" class="icon-button" type="button" aria-label="Cerrar">×</button>
       </div>
+
       <div id="cartItems" class="cart-items"></div>
+
+      <div class="customer-form" id="customerForm">
+        <span class="eyebrow">DATOS DEL PEDIDO</span>
+        <div class="form-grid">
+          <label>Comercio
+            <input id="customerBusiness" maxlength="120" autocomplete="organization" placeholder="Nombre del comercio">
+          </label>
+          <label>Contacto
+            <input id="customerName" maxlength="120" autocomplete="name" placeholder="Nombre y apellido">
+          </label>
+          <label class="form-span">WhatsApp
+            <input id="customerWhatsapp" maxlength="50" inputmode="tel" autocomplete="tel" placeholder="Ej. 261 555 1234">
+          </label>
+          <label class="form-span">Observaciones
+            <textarea id="customerNotes" maxlength="1000" rows="2" placeholder="Aclaraciones para RIX (opcional)"></textarea>
+          </label>
+        </div>
+      </div>
+
       <div class="cart-summary">
         <div><span>Unidades</span><strong id="cartUnits">0</strong></div>
         <div><span>Total estimado</span><strong id="cartTotal">$ 0</strong></div>
@@ -61,6 +81,7 @@
     </div>
   </aside>
   <div id="drawerBackdrop" class="backdrop hidden"></div>
+  <iframe id="rixOrderFrame" name="rixOrderFrame" class="hidden" title="Envío de pedido"></iframe>
 
   <div id="toast" class="toast" role="status"></div>
 
