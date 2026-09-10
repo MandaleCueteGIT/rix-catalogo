@@ -1,0 +1,77 @@
+.hero-logo-stage{
+  position:relative;
+  width:min(560px,100%);
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(28px,4vw,64px);
+  border-radius:34px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 52% 45%,rgba(200,0,50,.18),transparent 38%),
+    radial-gradient(circle at 50% 50%,rgba(255,255,255,.06),transparent 50%),
+    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  border:1px solid rgba(255,255,255,.075);
+  box-shadow:0 28px 70px rgba(0,0,0,.32);
+}
+
+.hero-logo-stage:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(120deg,transparent 0 36%,rgba(255,255,255,.055) 42%,transparent 52%),
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.08),transparent 34%);
+  opacity:.75;
+  pointer-events:none;
+}
+
+.hero-logo-stage:after{
+  content:"";
+  position:absolute;
+  width:70%;
+  height:28%;
+  left:15%;
+  bottom:12%;
+  border-radius:50%;
+  background:rgba(200,0,50,.16);
+  filter:blur(34px);
+  opacity:.55;
+  pointer-events:none;
+}
+
+.hero-logo-large{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:min(430px,88%);
+  height:auto;
+  max-height:230px;
+  object-fit:contain;
+  filter:drop-shadow(0 20px 46px rgba(0,0,0,.52));
+}
+
+@media(max-width:900px){
+  .hero-art{justify-content:flex-start}
+  .hero-logo-stage{
+    min-height:190px;
+    padding:28px;
+    border-radius:26px;
+  }
+  .hero-logo-large{
+    width:min(330px,88%);
+    max-height:160px;
+  }
+}
+
+@media(max-width:640px){
+  .hero-logo-stage{
+    min-height:150px;
+    padding:22px;
+  }
+  .hero-logo-large{
+    width:min(260px,86%);
+    max-height:130px;
+  }
+}
